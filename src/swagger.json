@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "RentalX API Documentation",
+    "description": "Documentation for the RentalX API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "me@doval.dev"
+    }
+  }
+}
