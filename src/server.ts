@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
+import "reflect-metadata";
 import swaggerUI from "swagger-ui-express";
+import "./database";
 import { router } from "./routes";
 import swaggerConfig from "./swagger.json";
 
