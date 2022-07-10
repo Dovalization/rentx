@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { DataSource } from "typeorm";
 
 const dataSource = new DataSource({
@@ -7,6 +8,15 @@ const dataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  synchronize: false,
+  logging: false,
+  entities: [],
+  migrations: ["./src/database/migrations/*.ts"],
+  subscribers: [],
 });
 
-dataSource.initialize();
+function createConnection(host = process.env.DB_HOST): Promise<DataSource> {
+  return dataSource.setOptions({ host }).initialize();
+}
+
+createConnection();
