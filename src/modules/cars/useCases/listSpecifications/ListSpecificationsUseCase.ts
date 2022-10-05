@@ -1,11 +1,11 @@
+import { inject, injectable } from "tsyringe";
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
-
+@injectable()
 class ListSpecificationsUseCase {
-  private specificationsRepository: ISpecificationsRepository;
-
-  constructor(specificationsRepository: ISpecificationsRepository) {
-    this.specificationsRepository = specificationsRepository;
-  }
+  constructor(
+    @inject("SpecificationsRepository")
+    private specificationsRepository: ISpecificationsRepository
+  ) {}
 
   execute() {
     const specifications = this.specificationsRepository.list();
