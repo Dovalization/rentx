@@ -10,8 +10,6 @@ createConnection();
 
 const app = express();
 
-console.log(process.env.DB_HOST);
-
 const port = process.env.EXPRESS_PORT || 3333;
 
 app.use(express.json());
