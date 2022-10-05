@@ -108,6 +108,28 @@
             "description": "Specification already exists"
           }
         }
+      },
+      "get":{
+        "tags": [
+          "Specification"
+        ],
+        "summary": "Get all specifications",
+        "description": "Get all specifications",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Specification"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
