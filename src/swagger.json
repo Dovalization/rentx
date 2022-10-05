@@ -8,69 +8,138 @@
       "email": "me@doval.dev"
     }
   },
-  "paths" : {
+  "paths": {
     "/categories": {
-      "post" :{
-        "tags": ["Category"],
+      "post": {
+        "tags": [
+          "Category"
+        ],
         "summary": "Create a new category",
         "description": "Create a new category",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  }
-                },
-                "example": {
-                  "name": "Category name",
-                  "description": "Category description"
-                }
+                "$ref": "#/definitions/Category"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description" : "Created"
+            "description": "Created"
           },
           "500": {
-            "description" : "Category already exists"
+            "description": "Category already exists"
           }
         }
       },
-      "get" :{
-        "tags": ["Category"],
+      "get": {
+        "tags": [
+          "Category"
+        ],
         "summary": "Get all categories",
         "description": "Get all categories",
         "responses": {
           "200": {
-            "description" : "Success",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      }
-                    }
+                    "$ref": "#/definitions/Category"
                   }
                 }
               }
             }
           }
         }
+      }
+    },
+    "categories/import": {
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Upload new category",
+        "description": "Upload new category",
+        "requestBody": {
+          "content": {
+            "multipart/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Category already exists"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": [
+          "Specification"
+        ],
+        "summary": "Create a new specification",
+        "description": "Create a new specification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Specification"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Specification already exists"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "name": "Category name",
+        "description": "Category description"
+      }
+    },
+    "Specification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "name": "Specification name",
+        "description": "Specification description"
       }
     }
   }
